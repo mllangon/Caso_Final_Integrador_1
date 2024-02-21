@@ -16,4 +16,14 @@ public class CronometroCosmico {
         System.out.print("Ingrese los días por año: ");
         diasPorAnoPlaneta = scanner.nextDouble();
     }
+
+    private static void convertirYVisualizarTiempo(double horas, boolean esParaPlaneta) {
+        double horasPorDia = esParaPlaneta ? horasPorDiaPlaneta : HORAS_POR_DIA_TIERRA;
+        double diasPorAno = esParaPlaneta ? diasPorAnoPlaneta : DIAS_POR_ANO_TIERRA;
+
+        double dias = horas / horasPorDia;
+        double anos = dias / diasPorAno;
+
+        System.out.printf("Años: %.2f, Días: %.2f, Horas: %.0f%n", anos, dias, horas);
+    }
 }
