@@ -8,35 +8,38 @@ public class CronometroCosmico {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Configuración del nuevo planeta:");
-        System.out.print("Ingrese las horas por día en el nuevo planeta: ");
-        horasPorDiaPlaneta = scanner.nextDouble();
-        System.out.print("Ingrese los días por año en el nuevo planeta: ");
-        diasPorAnoPlaneta = scanner.nextDouble();
-        System.out.print("Ingrese las horas a convertir: ");
-        double horas = scanner.nextDouble();
-        System.out.print("¿Convertir para el nuevo planeta? (true/false): ");
-        boolean esParaPlaneta = scanner.nextBoolean();
 
-        convertirYVisualizarTiempo(horas, esParaPlaneta);
+        // Solicitar la configuración del nuevo planeta
+        System.out.println("Ingrese la duración de un día en el nuevo planeta (en horas): ");
+        horasPorDiaPlaneta = scanner.nextDouble();
+        System.out.println("Ingrese la duración de un año en el nuevo planeta (en días): ");
+        diasPorAnoPlaneta = scanner.nextDouble();
+
+        // Conversión de tiempo
+        System.out.println("Ingrese las horas a convertir: ");
+        double horas = scanner.nextDouble();
+        mostrarConversion(horas);
+
+        // Mostrar límites de los tipos de datos
         mostrarLimitesDeDatos();
     }
 
-    private static void convertirYVisualizarTiempo(double horas, boolean esParaPlaneta) {
-        double horasPorDia = esParaPlaneta ? horasPorDiaPlaneta : HORAS_POR_DIA_TIERRA;
-        double diasPorAno = esParaPlaneta ? diasPorAnoPlaneta : DIAS_POR_ANO_TIERRA;
+    private static void mostrarConversion(double horas) {
+        // Conversión en la Tierra
+        double diasTierra = horas / HORAS_POR_DIA_TIERRA;
+        double anosTierra = diasTierra / DIAS_POR_ANO_TIERRA;
+        System.out.printf("En la Tierra: %.2f días o %.2f años%n", diasTierra, anosTierra);
 
-        double dias = horas / horasPorDia;
-        double anos = dias / diasPorAno;
-
-        System.out.printf("%s - Años: %.2f, Días: %.2f, Horas: %.0f%n",
-                esParaPlaneta ? "Nuevo Planeta" : "Tierra", anos, dias, horas);
+        // Conversión en el nuevo planeta
+        double diasPlaneta = horas / horasPorDiaPlaneta;
+        double anosPlaneta = diasPlaneta / diasPorAnoPlaneta;
+        System.out.printf("En el nuevo planeta: %.2f días o %.2f años%n", diasPlaneta, anosPlaneta);
     }
 
     private static void mostrarLimitesDeDatos() {
-        System.out.println("Máximo valor para int: " + Integer.MAX_VALUE);
-        System.out.println("Máximo valor para long: " + Long.MAX_VALUE);
-        System.out.println("Máximo valor para float: " + Float.MAX_VALUE);
-        System.out.println("Máximo valor para double: " + Double.MAX_VALUE);
+        System.out.println("Máximo valor para un int: " + Integer.MAX_VALUE);
+        System.out.println("Máximo valor para un long: " + Long.MAX_VALUE);
+        System.out.println("Máximo valor para un float: " + Float.MAX_VALUE);
+        System.out.println("Máximo valor para un double: " + Double.MAX_VALUE);
     }
 }
