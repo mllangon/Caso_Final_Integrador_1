@@ -26,4 +26,11 @@ public class CronometroCosmico {
 
         System.out.printf("Años: %.2f, Días: %.2f, Horas: %.0f%n", anos, dias, horas);
     }
+
+    private static void mostrarLimitesDeDatos() {
+        System.out.println("Máximo valor para int: " + Integer.MAX_VALUE);
+        System.out.println("Máximo valor para long: " + Long.MAX_VALUE);
+        System.out.println("Máximo valor para float: " + Float.MAX_VALUE);
+        System.out.println("Máximo valor para double: " + Double.MAX_VALUE);
+    }
 }
