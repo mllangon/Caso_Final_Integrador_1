@@ -27,3 +27,46 @@ public class RecursosSuministros {
             System.out.println("Alerta: Riesgo de bajo nivel de " + nombre);
         }
     }
+
+    static class Recurso {
+        String nombre;
+        double consumoDiario;
+
+        Recurso(String nombre, double consumoDiario) {
+            this.nombre = nombre;
+            this.consumoDiario = consumoDiario;
+        }
+
+        double calcularMedia(double[] consumos) {
+            double suma = 0;
+            for (double consumo : consumos) {
+                suma += consumo;
+            }
+            return suma / consumos.length;
+        }
+
+        double encontrarMinimo(double[] consumos) {
+            double minimo = Double.MAX_VALUE;
+            for (double consumo : consumos) {
+                if (consumo < minimo) {
+                    minimo = consumo;
+                }
+            }
+            return minimo;
+        }
+
+        double encontrarMaximo(double[] consumos) {
+            double maximo = Double.MIN_VALUE;
+            for (double consumo : consumos) {
+                if (consumo > maximo) {
+                    maximo = consumo;
+                }
+            }
+            return maximo;
+        }
+
+        boolean alertaUmbral(double cantidadActual, double umbralSeguro) {
+            return (consumoDiario * 5) > (cantidadActual - umbralSeguro); // Ejemplo para 5 días
+        }
+    }
+}
