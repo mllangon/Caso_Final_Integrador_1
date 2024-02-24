@@ -23,7 +23,7 @@ public class CronometroCosmico {
     private static void mostrarHorasMinutosSegundos(double horas, double horasPorDia, String planeta) {
         int totalHoras = (int) (horas % horasPorDia);
         int minutos = (int) ((horas * 60) % 60);
-        int segundos = (int) ((horas * 3600) % 3600) % 60; // Corrección aquí para calcular correctamente
+        int segundos = (int) ((horas * 3600) % 3600) % 60;
 
         System.out.printf("Equivalentes en %s: %d horas, %d minutos, %d segundos%n", planeta, totalHoras, minutos, segundos);
     }
