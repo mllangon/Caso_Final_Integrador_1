@@ -27,7 +27,7 @@ class RecursoTest {
     @Test
     void testAlertaUmbral() {
         Recurso recurso = new Recurso("Agua", 2);
-        assertTrue(recurso.alertaUmbral(50, 45)); // Consume 10 unidades en 5 días, umbral seguro es 45
-        assertFalse(recurso.alertaUmbral(100, 45)); // No debería alertar con suficiente recurso
+        assertTrue(recurso.alertaUmbral(50, 45));
+        assertFalse(recurso.alertaUmbral(100, 45));
     }
 }
