@@ -27,8 +27,10 @@ public class NavegadorEstelar {
     }
 
     public static int[][] multiplicarMatrices(int[][] matrizA, int[][] matrizB) {
+        if (matrizA[0].length != matrizB.length) {
+            throw new IllegalArgumentException("Las matrices no se pueden multiplicar: incompatibilidad de dimensiones.");
+        }
         int[][] resultado = new int[matrizA.length][matrizB[0].length];
-
         for (int i = 0; i < matrizA.length; i++) {
             for (int j = 0; j < matrizB[0].length; j++) {
                 for (int k = 0; k < matrizA[0].length; k++) {
@@ -36,9 +38,9 @@ public class NavegadorEstelar {
                 }
             }
         }
-
         return resultado;
     }
+
 
     public static void imprimirMatriz(int[][] matriz) {
         for (int[] fila : matriz) {
