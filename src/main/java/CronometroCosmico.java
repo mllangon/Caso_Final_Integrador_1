@@ -6,8 +6,22 @@ public class CronometroCosmico {
     private static double horasPorDiaPlaneta;
     private static double diasPorAnoPlaneta;
 
+    public static void configurarNuevoPlaneta(double horasDia, double diasAno) {
+        horasPorDiaPlaneta = horasDia;
+        diasPorAnoPlaneta = diasAno;
+    }
+
+    public static double convertirHorasADiasTierra(double horas) {
+        return horas / HORAS_POR_DIA_TIERRA;
+    }
+
+    public static double convertirHorasADiasPlaneta(double horas) {
+        return horas / horasPorDiaPlaneta;
+    }
+
     private static void mostrarConversion(double horas) {
-        // Tierra
+        try {
+    // Tierra
         double diasTierra = horas / HORAS_POR_DIA_TIERRA;
         double anosTierra = diasTierra / DIAS_POR_ANO_TIERRA;
         System.out.printf("En la Tierra: %.2f días, %.2f años%n", diasTierra, anosTierra);
@@ -18,6 +32,10 @@ public class CronometroCosmico {
         double anosPlaneta = diasPlaneta / diasPorAnoPlaneta;
         System.out.printf("En el nuevo planeta: %.2f días, %.2f años%n", diasPlaneta, anosPlaneta);
         mostrarHorasMinutosSegundos(horas, horasPorDiaPlaneta, "Nuevo Planeta");
+        }
+        catch (ArithmeticException e) {
+            System.out.println("Error en cálculo: " + e.getMessage());
+        }
     }
 
     private static void mostrarHorasMinutosSegundos(double horas, double horasPorDia, String planeta) {
@@ -28,7 +46,7 @@ public class CronometroCosmico {
         System.out.printf("Equivalentes en %s: %d horas, %d minutos, %d segundos%n", planeta, totalHoras, minutos, segundos);
     }
 
-    private static void mostrarLimitesDeDatos() {
+    public static void mostrarLimitesDeDatos() {
         System.out.println("Máximo valor para un int: " + Integer.MAX_VALUE);
         System.out.println("Máximo valor para un long: " + Long.MAX_VALUE);
         System.out.println("Máximo valor para un float: " + Float.MAX_VALUE);
