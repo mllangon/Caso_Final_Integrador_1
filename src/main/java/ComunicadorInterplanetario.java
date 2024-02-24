@@ -20,6 +20,12 @@ public class ComunicadorInterplanetario {
         System.out.println("¿El mensaje es un palíndromo (integridad del mensaje)?: " + esPalindromo);
     }
 
+    class MensajeVacioException extends Exception {
+        public MensajeVacioException(String mensaje) {
+            super(mensaje);
+        }
+    }
+
     public static int contarVocales(String mensaje) {
         int contador = 0;
         for (int i = 0; i < mensaje.length(); i++) {
