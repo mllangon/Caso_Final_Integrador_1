@@ -34,7 +34,7 @@ public class RecursosSuministros {
         }
     }
 
-    static class Recurso {
+    public static class Recurso {
         String nombre;
         double consumoDiario;
 
